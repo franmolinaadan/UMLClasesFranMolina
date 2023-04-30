@@ -10,11 +10,11 @@ class "Location" as Location
 
 Event <|-- Conference
 Event <|-- BoardMeeting
-Event -- Location
-Event -- Member
+Event -- Location : isLocated In
+Event -- Member : attendsTo
 
 Person <|-- Member
-Person -- Conference
+Person -- Conference: attendsTo
 
 Member <|-- BoardMember
 
@@ -22,7 +22,37 @@ Asociacion o-- Person
 Asociacion o-- Event
 Asociacion o-- Location
 
-BoardMeeting -- BoardMember
+BoardMeeting -- BoardMember: attendsTo
 
+class Asociacion{
+newLocation(l : Location) : void
+newEvent(e : Event) : void
+newPerson(p : Person) : void
+informEvent(e : Event) : void
+register(m : Member,e : Event) : void
+}
 
+class Location{
+description: String
+addres: String
+}
+
+class Person{
+name: String
+}
+
+class Event{
+date: Date
+description: String
+
+assign(l_ Location):void
+}
+
+class Member{
+e-mail: String
+}
+
+class Conference{
+max_attendees: Interger
+}
 @enduml
