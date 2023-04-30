@@ -10,19 +10,19 @@ class "Location" as Location
 
 Event <|-- Conference
 Event <|-- BoardMeeting
-Event -- Location : isLocated In
-Event -- Member : attendsTo
+Event "0..*"--"1" Location : isLocated In
+Event "0..*"--"0..*"Member : attendsTo
 
 Person <|-- Member
-Person -- Conference: attendsTo
+Person "0..*"--"0..*" Conference: attendsTo
 
 Member <|-- BoardMember
 
-Asociacion o-- Person
-Asociacion o-- Event
-Asociacion o-- Location
+Asociacion o--"0..*" Person
+Asociacion o--"0..*" Event
+Asociacion o--"0..*" Location
 
-BoardMeeting -- BoardMember: attendsTo
+BoardMeeting "0..*"--"0..*" BoardMember: attendsTo
 
 class Asociacion{
 newLocation(l : Location) : void
