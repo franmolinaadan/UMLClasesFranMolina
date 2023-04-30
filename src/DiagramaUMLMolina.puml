@@ -1,0 +1,28 @@
+@startuml
+class "Event" as Event
+class "Conference" as Conference
+class "BoardMeeting" as BoardMeeting
+class "Person" as Person
+class "Member" as Member
+class "BoardMember" as BoardMember
+class "AAUOC" as Asociacion
+class "Location" as Location
+
+Event <|-- Conference
+Event <|-- BoardMeeting
+Event -- Location
+Event -- Member
+
+Person <|-- Member
+Person -- Conference
+
+Member <|-- BoardMember
+
+Asociacion o-- Person
+Asociacion o-- Event
+Asociacion o-- Location
+
+BoardMeeting -- BoardMember
+
+
+@enduml
